@@ -209,6 +209,9 @@ The sample values shown reflect the latest runtimes\. The presence of specific v
 
 Lambda encrypts environment variables with a key that it creates in your account \(an AWS managed customer master key \(CMK\)\)\. Use of this key is free\. You can also choose to provide your own key for Lambda to use instead of the default key\.
 
+**Warning**
+If you use the default key then Lambda creates a grant on it for the function's execution role when an environment variable is configured for the first time\. If the execution role is deleted and then re-created then this grant will no longer be valid and the function will be unable to run\. You will not be able to re-create this grant without deleting and recreating the function\.
+
 When you provide the key, only users in your account with access to the key can view or manage environment variables on the function\. Your organization might also have internal or external requirements to manage keys that are used for encryption and to control when they're rotated\.
 
 **To use a customer managed CMK**
